@@ -48,13 +48,19 @@ interface Todo {
   return (
     <div>
       <h1>TODO List</h1>
+      <div className='mb-4'>
       <input
         type="text"
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
         placeholder="Add a new task..."
+        className="border rounded p-2 mr-2"
       />
-      <button onClick={handleAddTodo}>Add</button>
+      <button onClick={handleAddTodo} className='bg-blue-500 text-white rounded p-2'>Add</button>
+      </div>
+       
+      <div className="bg-gray-100 p-4 rounded">
+    
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>
@@ -84,6 +90,7 @@ interface Todo {
           </li>
         ))}
       </ul>
+      </div>
     </div>
   );
 };
