@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useTodoContext } from './TodoContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-interface Todo {
+  interface Todo {
   id: number;
   text: string;
   completed: boolean;
@@ -47,7 +49,7 @@ interface Todo {
 
   return (
     <div>
-      <h1>TODO List</h1>
+      <h1>Todo-List</h1>
       <div className='mb-4'>
       <input
         type="text"
@@ -58,12 +60,10 @@ interface Todo {
       />
       <button onClick={handleAddTodo} className='bg-blue-500 text-white rounded p-2'>Add</button>
       </div>
-       
-      <div className="bg-gray-100 p-4 rounded">
-    
+      <div className="bg-pink-100 p-4 rounded">
       <ul>
         {todos.map((todo) => (
-          <li key={todo.id}>
+          <li key={todo.id} className="flex items-center space-x-2">
             <input
               type="checkbox"
               checked={todo.completed}
@@ -76,15 +76,25 @@ interface Todo {
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
                 />
-                <button onClick={() => handleSaveTodo(todo.id)}>Save</button>
+                <div className="space-x-2">
+                <button onClick={() => handleSaveTodo(todo.id)}>
+                <i className="fa fa-check text-green-500"></i>
+                </button>
+                </div>
               </>
             ) : (
               <>
             <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
               {todo.text}
             </span>
-            <button onClick={() => handleEditTodo(todo.id)}>Edit</button>
-            <button onClick={() => handleDeleteTodo(todo.id)}>Delete</button>
+            <div className="space-x-4">
+            <button onClick={() => handleEditTodo(todo.id)}>
+            <FontAwesomeIcon icon={faPencil} className="text-blue-500" />
+            </button>
+            <button onClick={() => handleDeleteTodo(todo.id)}>
+            <FontAwesomeIcon icon={faTrash} className="text-red-500" />
+            </button>
+            </div>
             </>
             )}
           </li>

@@ -6,6 +6,7 @@ interface Todo {
   completed: boolean;
 }
 
+
 interface TodoContextType {
   todos: Todo[];
   addTodo: (todo: Todo) => void;
