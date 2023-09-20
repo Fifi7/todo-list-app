@@ -3,6 +3,7 @@ import { useTodoContext } from './TodoContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
 
+
   interface Todo {
   id: number;
   text: string;
