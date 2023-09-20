@@ -60,15 +60,18 @@ import { faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
       />
       <button onClick={handleAddTodo} className='bg-blue-500 text-white rounded p-2'>Add</button>
       </div>
-      <div className="bg-pink-100 p-4 rounded">
+      <div className="bg-pink-100 p-2 rounded max-w-md mx-auto">
       <ul>
         {todos.map((todo) => (
-          <li key={todo.id} className="flex items-center space-x-2">
+          <li key={todo.id} className="flex items-center justify-between space-x-2  p-2 border-b border-gray-300">
+             <div className="flex items-center space-x-2"></div>
+             <div className='w-8 h-8'>
             <input
               type="checkbox"
               checked={todo.completed}
               onChange={() => handleToggleTodo(todo.id)}
             />
+            </div>
              {isEditing === todo.id ? ( 
               <>
                 <input
@@ -84,10 +87,12 @@ import { faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
               </>
             ) : (
               <>
-            <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
+            <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
+            className='flex-grow'>
               {todo.text}
             </span>
-            <div className="space-x-4">
+            
+            <div className="space-x-2">
             <button onClick={() => handleEditTodo(todo.id)}>
             <FontAwesomeIcon icon={faPencil} className="text-blue-500" />
             </button>
